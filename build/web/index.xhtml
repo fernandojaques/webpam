@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+        <title>WebPAM</title>
+
+        <link href="css/reset.css" rel="stylesheet" type="text/css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link href='http://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'/>
+        <style>
+            .semBorda tr, .semBorda td {  
+                border: none !important;  
+            }
+        </style>
+
+
+    </h:head>
+    <h:body>
+        <div id="main">
+            <div id="top_bar">
+
+                <div class="social_wrapper">
+                    <div class="social">
+
+                        <!-- Social Links -->
+                        <ul id="social"> 
+                            <li class="facebook">
+                                <a href="#" title="Facebook"></a>
+                            </li>
+                            <li class="twitter">
+                                <a href="#" title="Twitter"></a>
+                            </li>
+                            <li class="google">
+                                <a href="#" title="Google+"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="wrapper">
+
+
+                <div id="container">
+                    <h1>Discuta e Classifique seus problemas de maneira colaborativa.</h1>
+                    <h5>
+                        O WebPAM pode ser utilizado para apoiar projetos de diferentes naturezas (e.g., científicos, educacionais, empresariais), favorecendo um entendimento mais amplo do contexto social em que esses projetos estão sendo desenvolvidos, e contribuindo para o desenvolvimento de soluções que façam sentido aos seus usuários.</h5>
+                </div>
+
+
+                <div id="email_wrap">
+                    <h:form id="loginPrincipal">			
+                        <p:commandButton value="#{msgs.access}" id="entrar" onclick="dlgLogin.show()" style="width: 310px; height: 75px; font-size: 30px"/>
+
+                        <br/><br/>
+                        <h:outputLabel value="Novo no WebPAM? &nbsp;" class="tel" style="font-size: 20px"/>
+                        <p:commandButton value="#{msgs.signup}" id="insc" action="#{userControl.newUser()}" onclick="dlgRegister.show()" style="width: 310px; height: 75px; font-size: 30px"/>
+                    </h:form>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div id="divider"></div>
+
+        <div class="features_wrapper">
+            <div id="features_bar">
+
+                <div class="feature">
+                    <h2>O que é?</h2>
+                    <h3>O WebPAM é uma ferramenta Web que permita a clarificação colaborativa de problemas por meio de artefatos desenvolvidos e/ou inspirados no Método PAM.</h3>
+                </div>
+
+                <div class="feature">
+                    <h2>Como utilizar?</h2>
+                    <h3> 
+                        Descrição aqui
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <p:growl id="growl" life="3000" autoUpdate="true" /> 
+
+
+        <p:dialog id="dialogLogin" header="#{msgs.dialogLoginTitle}" widgetVar="dlgLogin"  modal="true"  draggable="false" resizable="false" hideEffect="bounce">  
+            <form  id="loginForm" action="j_spring_security_check" method="post" > 
+                <p:panelGrid columns="2" styleClass="semBorda" >  
+                    <h:outputLabel value="#{msgs.email}" />  
+                    <p:inputText id="j_username"  />
+                    <h:outputLabel value="#{msgs.password}" />  
+                    <p:password id="j_password"  required="true"/>
+                    <h:outputLabel/>
+                    <h:commandButton value="#{msgs.loginButton}" action="j_spring_security_check"/>
+                </p:panelGrid> 
+            </form>  
+        </p:dialog>  
+
+        <p:dialog id="dialogRegister" header="#{msgs.dialogRegisterTitle}" widgetVar="dlgRegister"  modal="true" hideEffect="explode">  
+            <h:form id="RegForm" > 
+                <p:panelGrid columns="2" styleClass="semBorda" > 
+                    <h:outputLabel value="#{msgs.name}"/>
+                    <p:inputText id="name" value="#{userControl.user.name}" required="true" requiredMessage="#{msgs.requiredName}"/>
+                    <h:outputLabel  value="#{msgs.lastName}"/>
+                    <p:inputText id="lastName" value="#{userControl.user.lastName}" />
+                    <h:outputLabel  value="#{msgs.email}"/>
+                    <p:inputText id="email" value="#{userControl.user.email}" required="true" requiredMessage="#{msgs.requiredEmail}"/>
+                    <h:outputLabel  value="#{msgs.password}"/>
+                    <p:password id="pass" value="#{userControl.user.password}" required="true" requiredMessage="#{msgs.requiredPass}" 
+                                promptLabel="#{msgs.security}" goodLabel="#{msgs.good}"  strongLabel="#{msgs.strong}" weakLabel="#{msgs.weak}" feedback="true" inline="true"/>
+                    <h:outputText/> 
+
+                    <p:commandButton value="#{msgs.register}" action="#{userControl.save()}" update=":growl"/>
+
+                </p:panelGrid> 
+            </h:form>              
+        </p:dialog>  
+
+        <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px">  
+            <f:facet name="start">  
+                <p:graphicImage value="/images/loading.gif" />  
+            </f:facet>  
+
+            <f:facet name="complete">  
+                <h:outputText value="" />  
+            </f:facet>  
+        </p:ajaxStatus>
+
+    </h:body>
+</html>
+

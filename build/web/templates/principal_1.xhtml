@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>WebPAM</title>
+        <link rel="stylesheet" href="css/style.default.css" type="text/css" />
+        <script type="text/javascript" src="js/plugins/jquery-1.7.min.js"></script>
+        <script type="text/javascript" src="js/plugins/jquery-ui-1.8.16.custom.min.js"></script>
+        <script type="text/javascript" src="js/plugins/jquery.cookie.js"></script>
+        <script type="text/javascript" src="js/plugins/jquery.uniform.min.js"></script>
+        <script type="text/javascript" src="js/plugins/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="js/plugins/jquery.flot.resize.min.js"></script>
+        <script type="text/javascript" src="js/plugins/jquery.slimscroll.js"></script>
+        <script type="text/javascript" src="js/custom/general.js"></script>
+        <script type="text/javascript" src="js/custom/dashboard.js"></script>
+    </h:head>
+
+    <h:body class="withvernav">
+        
+        <ui:insert name="topo">
+            
+            <div class="bodywrapper">
+                <div class="topheader">
+                    <div class="left">
+                        <h1 class="logo">Web<span>PAM</span></h1>
+                        <span class="slogan">Problem Articulation Method na Internet</span><!--search-->
+                        <br clear="all" />
+                    </div><!--left-->
+                </div><!--topheader-->
+
+                <div class="header">
+                    <ul class="headermenu">
+                        <li class="current"><a href="dashboard.html"><span class="icon icon-flatscreen"></span>Dashboard</a></li>
+                        <li><a href="manageblog.html"><span class="icon icon-pencil"></span>Users</a></li>
+                        <li><a href="messages.html"><span class="icon icon-message"></span>Events</a></li>
+                        <li><a href="reports.html"><span class="icon icon-chart"></span>Chat</a></li>
+                    </ul><!--headerwidget-->
+                </div><!--header-->
+
+            </div><!--bodywrapper-->
+            
+        </ui:insert>
+        <div class="vernav2 iconmenu">
+            <ul>
+                <li><a href="#formsub" class="editor">Problema</a>
+                    <span class="arrow"></span>
+                    <ul id="formsub">
+                        <li><a href="problem.jsf">Edit</a></li>
+                    </ul>
+                </li>
+                <li><a href="filemanager.html" class="gallery">Diagram stakeholders</a></li>
+                <li><a href="elements.html" class="elements">Evaluation Framework</a></li>
+                <li><a href="widgets.html" class="widgets">Valuation Framing</a></li>
+                <li><a href="calendar.html" class="calendar">Semiotic Framework</a></li>
+                <li><a href="support.html" class="support">e-Value</a></li>
+                <li><a href="typography.html" class="typo">Value Identification</a></li>
+                <li><a href="tables.html" class="tables">Culturally Aware Requirements</a></li>
+                <li><a href="buttons.html" class="buttons">Value Comparison Table</a></li>
+            </ul>
+            <a class="togglemenu"></a>
+            <br /><br />
+        </div><!--leftmenu-->
+        <ui:insert name="left">
+
+
+        </ui:insert>
+        <ui:insert name="content"></ui:insert>
+        <ui:insert name="bottom"></ui:insert>
+    </h:body>
+</html>
